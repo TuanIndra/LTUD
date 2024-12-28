@@ -2,6 +2,8 @@ import 'package:damh_flutter/consts/consts.dart';
 import 'package:damh_flutter/consts/lists.dart';
 import 'package:damh_flutter/main.dart';
 import 'package:damh_flutter/screens/auth_screens/register_screen.dart';
+import 'package:damh_flutter/screens/home_screens/home.dart';
+import 'package:damh_flutter/screens/home_screens/home_screen.dart';
 import 'package:damh_flutter/widgets/applogo_widget.dart';
 import 'package:damh_flutter/widgets/bg_widget.dart';
 import 'package:damh_flutter/widgets/custom_textfield.dart';
@@ -45,7 +47,9 @@ class LoginScreen extends StatelessWidget {
                         color: Colors.red,
                         title: login,
                         textcolor: whiteColor,
-                        onPress: () {})
+                        onPress: () {
+                          Get.to(()=>Home());
+                        })
                     .box
                     .width(context.screenWidth - 50)
                     .make(),
