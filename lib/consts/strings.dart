@@ -17,6 +17,8 @@ const nameHint="Vui lòng nhập tên của bạn";
 const RiengTu="Privacy";
 const termAndCond="Term and condition";
 const DaCoTK ="Nếu đã có tài khoản? ";
+const logout ="Đăng xuất";
+const loggedin ="Đăng nhập thành công";
 
 const home = "Trang chủ", categories = "Thương hiệu", cart = "Giỏ hàng", account = "Tài khoản";
 const searchanything = "Tìm kiếm...",
@@ -33,3 +35,6 @@ const searchanything = "Tìm kiếm...",
     tShirts = "T-Shirts",
     featureProduct = "Feature Products",
     girlsDress = "Girl Dress";
+
+//PROFILE STRING
+const wishlist = "My wishlist", orders = "My orders", messages = "Messages";

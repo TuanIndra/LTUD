@@ -9,3 +9,6 @@ const featureList2 = [imgS4, imgS5, imgS6];
 
 const featureTitles1 = [womenDress, girlsDress, girlsWatches];
 const featureTitles2 = [boysGlasses, mobilePhone, tShirts];
+
+const profilesButtonList = [orders, wishlist, messages];
+const profilesButtonIcon = [icOrder, icOrder, icMessages];
