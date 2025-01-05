@@ -38,3 +38,15 @@ const searchanything = "Tìm kiếm...",
 
 //PROFILE STRING
 const wishlist = "My wishlist", orders = "My orders", messages = "Messages";
+
+const Iphone = "Gía",
+    Samsung = "Hê điều hành",
+    Nokia = "Đối tượng người dùng",
+    XiaoMi = "Cấu hình";
+//item detail
+const video = "video",
+    reviews = "reviews",
+    sellerPolicy = "Seller policy",
+    returnPolicy = "Return Policy",
+    supportPolicy = "Support policy",
+    productUMayLike = "Sản phẩm bạn có thể sẽ thích";

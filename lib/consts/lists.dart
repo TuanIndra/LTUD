@@ -12,3 +12,11 @@ const featureTitles2 = [boysGlasses, mobilePhone, tShirts];
 
 const profilesButtonList = [orders, wishlist, messages];
 const profilesButtonIcon = [icOrder, icOrder, icMessages];
+
+const categoriesList = [
+  Iphone,Samsung,XiaoMi,Nokia
+];
+const categoriesImage=[
+  imgFc1,imgFc2,imgFc3,imgFc4
+];
+const itemDetailButtonsList =[video,reviews,RiengTu,returnPolicy, supportPolicy];
