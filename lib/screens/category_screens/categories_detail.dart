@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:damh_flutter/controllers/product_controller.dart';
 import 'package:damh_flutter/screens/category_screens/item_details.dart';
-import 'package:damh_flutter/screens/splash_screen.dart';
 import 'package:damh_flutter/services/firestore_services.dart';
 import 'package:damh_flutter/widgets/bg_widget.dart';
 import 'package:damh_flutter/widgets/loading_indicator.dart';
-import 'package:flutter/material.dart';
 import 'package:damh_flutter/consts/consts.dart';
 import 'package:get/get.dart';
 
@@ -38,7 +36,7 @@ class CategoriesDetail extends StatelessWidget {
                   } else {
                     var data = snapshot.data!.docs;
                     return Container(
-                      padding: EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(12),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -70,7 +68,7 @@ class CategoriesDetail extends StatelessWidget {
                                 shrinkWrap: true,
                                 itemCount: data.length,
                                 gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 2,
                                         mainAxisExtent: 250,
                                         mainAxisSpacing: 8,
@@ -109,9 +107,10 @@ class CategoriesDetail extends StatelessWidget {
                                       .padding(const EdgeInsets.all(12))
                                       .make()
                                       .onTap(() {
-                                    Get.to(() => ItemDetails(
-                                        title: "${data[index]['p_name']}",data: data[index]));
-                                  });
+                                        controller.checkIfFav(data[index]);
+                                        Get.to(() => ItemDetails(
+                                            title: "${data[index]['p_name']}",data: data[index]));
+                                      });
                                 }),
                           )
                         ],

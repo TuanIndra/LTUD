@@ -1,10 +1,8 @@
-import 'package:damh_flutter/consts/colors.dart';
 import 'package:damh_flutter/consts/consts.dart';
 import 'package:damh_flutter/consts/lists.dart';
 import 'package:damh_flutter/controllers/product_controller.dart';
-import 'package:damh_flutter/screens/splash_screen.dart';
+import 'package:damh_flutter/screens/chat_screen/chat_screen.dart';
 import 'package:damh_flutter/widgets/our_button.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ItemDetails extends StatelessWidget {
@@ -23,21 +21,32 @@ class ItemDetails extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.share,
               )),
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.favorite_outline,
-              ))
+          Obx(() => IconButton(
+                onPressed: () {
+                  if(controller.isFav.value) {
+                    controller.removeFromWishList(data.id, context);
+                    controller.isFav(false);
+                  }
+                  else {
+                    controller.addToWishList(data.id, context);
+                    controller.isFav(true);
+                  }
+                },
+                icon: Icon(
+                  Icons.favorite_outlined,
+                  color: controller.isFav.value ? redColor : darkFontGrey,
+                )),
+          )
         ],
       ),
       body: Column(
         children: [
           Expanded(
               child: Container(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,10 +105,16 @@ class ItemDetails extends StatelessWidget {
                               .make()
                         ],
                       )),
-                      CircleAvatar(
+                      const CircleAvatar(
                         backgroundColor: Colors.white,
                         child: Icon(Icons.message_rounded, color: darkFontGrey),
-                      )
+                      ).onTap(() {
+                        Get.to(
+                              () => const ChatScreen(),
+                              arguments: [data['p_seller'], data['vendor_id']],
+                        );
+
+                      })
                     ],
                   )
                       .box
@@ -178,7 +193,7 @@ class ItemDetails extends StatelessWidget {
                                         controller.calculateTotalprice(
                                             int.parse(data['p_price']));
                                       },
-                                      icon: Icon(Icons.add)),
+                                      icon: const Icon(Icons.add)),
                                   10.widthBox,
                                   "(${data['p_quantity']} có sẵn)"
                                       .text
@@ -288,6 +303,7 @@ class ItemDetails extends StatelessWidget {
                   controller.addToCart(
                       color: data['p_colors'][controller.colorIndex.value],
                       context: context,
+                      vendorID: data['vendor_id'],
                       img: data["p_imgs"][0],
                       qty: controller.quantity.value,
                       sellername: data['p_seller'],

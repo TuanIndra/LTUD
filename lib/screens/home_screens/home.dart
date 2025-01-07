@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:damh_flutter/consts/consts.dart';
 import 'package:get/get.dart';
 
+import '../../widgets/exit_dialog.dart';
+
 class Home extends StatelessWidget {
   const Home({super.key});
 
@@ -29,23 +31,31 @@ class Home extends StatelessWidget {
       ProfileScreen(),
     ];
 
-    return Scaffold(
-      body: Column(
-        children: [
-          Obx(() => Expanded(child: navBody.elementAt(controller.currentNavIndex.value))),
-        ],
-      ),
-      bottomNavigationBar: Obx( () =>
-          BottomNavigationBar(
-            currentIndex: controller.currentNavIndex.value,
-            selectedItemColor: redColor,
-            selectedLabelStyle: const TextStyle(fontFamily: semibold),
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: whiteColor,
-            items: narbarItem,
-            onTap: (value){
-              controller.currentNavIndex.value = value;
-            },
+    return WillPopScope(
+      onWillPop: () async {
+        showDialog(
+            barrierDismissible: false,
+            context: context, builder: (context) => exitDialog(context));
+        return false;
+      },
+      child: Scaffold(
+        body: Column(
+          children: [
+            Obx(() => Expanded(child: navBody.elementAt(controller.currentNavIndex.value))),
+          ],
+        ),
+        bottomNavigationBar: Obx( () =>
+            BottomNavigationBar(
+              currentIndex: controller.currentNavIndex.value,
+              selectedItemColor: redColor,
+              selectedLabelStyle: const TextStyle(fontFamily: semibold),
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: whiteColor,
+              items: narbarItem,
+              onTap: (value){
+                controller.currentNavIndex.value = value;
+              },
+          ),
         ),
       ),
     );

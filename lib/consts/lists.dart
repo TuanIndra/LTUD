@@ -20,3 +20,6 @@ const categoriesImage=[
   imgFc1,imgFc2,imgFc3,imgFc4
 ];
 const itemDetailButtonsList =[video,reviews,RiengTu,returnPolicy, supportPolicy];
+
+const paymentMethodImg = [imgPaypal, imgStripe, imgCod];
+const paymentMethod = [paypal, stripe, cod];

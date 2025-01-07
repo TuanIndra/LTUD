@@ -39,7 +39,7 @@ const searchanything = "Tìm kiếm...",
 //PROFILE STRING
 const wishlist = "My wishlist", orders = "My orders", messages = "Messages";
 
-const Iphone = "Gía",
+const Iphone = "Giá",
     Samsung = "Hê điều hành",
     Nokia = "Đối tượng người dùng",
     XiaoMi = "Cấu hình";
@@ -50,3 +50,5 @@ const video = "video",
     returnPolicy = "Return Policy",
     supportPolicy = "Support policy",
     productUMayLike = "Sản phẩm bạn có thể sẽ thích";
+
+const paypal = "Paypal", stripe = "Stripe", cod = "Cash on delivery";

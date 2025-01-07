@@ -3,7 +3,6 @@ import 'package:damh_flutter/consts/lists.dart';
 import 'package:damh_flutter/controllers/product_controller.dart';
 import 'package:damh_flutter/screens/category_screens/categories_detail.dart';
 import 'package:damh_flutter/widgets/bg_widget.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CategoryScreen extends StatelessWidget {
@@ -19,11 +18,11 @@ class CategoryScreen extends StatelessWidget {
         title: categories.text.fontFamily(bold).white.make(),
       ),
       body: Container(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         child: GridView.builder(
             shrinkWrap: true,
             itemCount: 4,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
@@ -43,13 +42,12 @@ class CategoryScreen extends StatelessWidget {
                       .color(darkFontGrey)
                       .align(TextAlign.center)
                       .make()
-                      .onTap(() {
-                        controller.getSubcategories(categoriesList[index]);
-                    Get.to(
-                        () => CategoriesDetail(title: categoriesList[index]));
-                  }),
                 ],
-              ).box.white.rounded.clip(Clip.antiAlias).outerShadowSm.make();
+              ).box.white.rounded.clip(Clip.antiAlias).outerShadowSm.make().onTap((){
+                controller.getSubcategories(categoriesList[index]);
+                Get.to(
+                        () => CategoriesDetail(title: categoriesList[index]));
+              });
             }),
       ),
     ));
