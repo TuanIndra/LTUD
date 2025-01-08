@@ -1,0 +1,36 @@
+{
+    "categories": [
+        {
+            "name": "Giá",
+            "subcategory": [
+                "Điện thoại giá rẻ",
+                "Điện thoại tầm trung",
+                "Điện thoại cao cấp"
+            ]
+        },
+        {
+            "name":"Hê điều hành",
+            "subcategory":[
+                "Android",
+                "Ios",
+                "khác"
+            ]
+        },
+        {
+            "name":"Đối tượng người dùng",
+            "subcategory":[
+                "Dành cho học sinh, sinh viên",
+                "Dành cho người lớn tuổi",
+                "Dành cho dân công nghệ"
+            ]
+        },
+        {
+            "name":"Cấu hình",
+            "subcategory":[
+                "Điện thoại cho người chơi game",
+                "Điện thoại cho công việc",
+                "Điện thoại chụp ảnh đẹp"
+            ]
+        }
+    ]
+}

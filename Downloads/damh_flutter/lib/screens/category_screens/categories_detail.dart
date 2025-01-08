@@ -1,0 +1,151 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:damh_flutter/controllers/product_controller.dart';
+import 'package:damh_flutter/screens/category_screens/item_details.dart';
+import 'package:damh_flutter/services/firestore_services.dart';
+import 'package:damh_flutter/widgets/bg_widget.dart';
+import 'package:damh_flutter/widgets/loading_indicator.dart';
+import 'package:damh_flutter/consts/consts.dart';
+import 'package:get/get.dart';
+
+class CategoriesDetail extends StatefulWidget {
+  final String? title;
+
+  const CategoriesDetail({Key? key, this.title}) : super(key: key);
+
+  @override
+  State<CategoriesDetail> createState() => _CategoriesDetailState();
+}
+
+class _CategoriesDetailState extends State<CategoriesDetail> {
+  @override
+  void initState(){
+    super.initState();
+    switchCategory(widget.title);
+  }
+
+  switchCategory(title){
+    if(controller.subcat.contains(title)){
+      productMethod=FirestoreServices.getSubCategoryProduct(title);
+    }else{
+      productMethod=FirestoreServices.getProducts(title);
+    };
+  }
+  var controller = Get.find<ProductController>();
+  dynamic productMethod;
+  @override
+  Widget build(BuildContext context) {
+    
+    return bgWidget(
+        child: Scaffold(
+            appBar: AppBar(
+              title: widget.title!.text.fontFamily(bold).white.make(),
+            ),
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(
+                        controller.subcat.length,
+                        (index) => "${controller.subcat[index]}"
+                            .text
+                            .size(12)
+                            .fontFamily(bold)
+                            .color(darkFontGrey)
+                            .makeCentered()
+                            .box
+                            .white
+                            .rounded
+                            .size(150, 60)
+                            .margin(const EdgeInsets.symmetric(horizontal: 4))
+                            .make().onTap((){
+                              switchCategory("${controller.subcat[index]}");
+                              setState(() {
+                                
+                              });
+                            }),
+
+                            ),
+                  ),
+                ),
+                20.heightBox,
+                StreamBuilder(
+                    stream: productMethod,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (!snapshot.hasData) {
+                        return Expanded(
+                          child: loadingIndicator(),
+                        );
+                      } else if (snapshot.data!.docs.isEmpty) {
+                        return Expanded(
+                          child: "No products found!"
+                              .text
+                              .white
+                              .makeCentered(),
+                        );
+                      } else {
+                        var data = snapshot.data!.docs;
+                        return 
+                            Expanded(
+                              child: GridView.builder(
+                                  physics: const BouncingScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: data.length,
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 2,
+                                          mainAxisExtent: 250,
+                                          mainAxisSpacing: 8,
+                                          crossAxisSpacing: 8),
+                                  itemBuilder: (context, index) {
+                                    return Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Image.network(
+                                            data[index]['p_imgs'][0],
+                                            height: 150,
+                                            width: 200,
+                                            fit: BoxFit.cover),
+                                        10.heightBox,
+                                        "${data[index]['p_name']}"
+                                            .text
+                                            .fontFamily(semibold)
+                                            .color(darkFontGrey)
+                                            .make(),
+                                        10.heightBox,
+                                        "${data[index]['p_price']}"
+                                            .numCurrency
+                                            .text
+                                            .color(redColor)
+                                            .fontFamily(bold)
+                                            .size(16)
+                                            .make(),
+                                      ],
+                                    )
+                                        .box
+                                        .white
+                                        .margin(const EdgeInsets.symmetric(
+                                            horizontal: 4))
+                                        .roundedSM
+                                        .outerShadowSm
+                                        .padding(const EdgeInsets.all(12))
+                                        .make()
+                                        .onTap(() {
+                                      controller.checkIfFav(data[index]);
+                                      Get.to(() => ItemDetails(
+                                          title: "${data[index]['p_name']}",
+                                          data: data[index]));
+                                    });
+                                  }),
+                            );
+                        
+                      }
+                    }),
+              ],
+            )));
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1033863568078",
+    "project_id": "damh-flutter",
+    "storage_bucket": "damh-flutter.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033863568078:android:767dfdf24c50498e108e9f",
+        "android_client_info": {
+          "package_name": "com.example.damh_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlPAS31ujkyywH8B4wd-9hMsI3RXXulgI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
