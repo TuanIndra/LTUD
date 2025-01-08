@@ -44,20 +44,20 @@ class ProductController extends GetxController {
   }
   addToCart({
     title,img,sellername,color,qty,tprice,context, vendorID
-  }) async{
-    await firestore.collection(cartCollection).doc().set({
-      'title':title,
-      'img':img,
-      'sellername':sellername,
-      'color':color,
-      'qty':qty,
-      'vender_id' : vendorID,
-      'tprice':tprice,
-      'added_by':currentUser!.uid
+    }) async{
+      await firestore.collection(cartCollection).doc().set({
+        'title':title,
+        'img':img,
+        'sellername':sellername,
+        'color':color,
+        'qty':qty,
+        'vender_id' : vendorID,
+        'tprice':tprice,
+        'added_by':currentUser!.uid
 
-    }).catchError((error){
-      VxToast.show(context,msg: error.toString());
-    });
+      }).catchError((error){
+        VxToast.show(context,msg: error.toString());
+      });
   }
 
   resetValues() {

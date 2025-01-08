@@ -57,17 +57,24 @@ class CartController extends GetxController {
 
   getProductDetails() {
     products.clear();
-    for(var i=0; i<productSnapshot.length; i++) {
+    for (var i = 0; i < productSnapshot.length; i++) {
+      var doc = productSnapshot[i];
       products.add({
-        'color' : productSnapshot[i]['color'],
-        'img' : productSnapshot[i]['img'],
-        'vendor_id' : productSnapshot[i]['vendor_id'],
-        'tprice' : productSnapshot[i]['tprice'],
-        'qty' : productSnapshot[i]['qty'],
-        'title' : productSnapshot[i]['title'],
+        'color': doc.get('color'), // Sử dụng .get()
+        'img': doc.get('img'),
+        'vendor_id': doc.data().containsKey('vendor_id') ? doc.get('vendor_id') : null, // Kiểm tra key trước khi truy cập
+        'tprice': doc.get('tprice'),
+        'qty': doc.get('qty'),
+        'title': doc.get('title'),
       });
     }
-    
     print(products);
   }
+
+  clearCart() {
+    for(var i =0 ; i<productSnapshot.length; i++) {
+      firestore.collection(cartCollection).doc(productSnapshot[i].id).delete();
+    }
+  }
+
 }

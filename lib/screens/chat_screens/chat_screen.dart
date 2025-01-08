@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:damh_flutter/consts/consts.dart';
 import 'package:damh_flutter/controllers/chats_controller.dart';
-import 'package:damh_flutter/screens/chat_screen/components/sender_bubble.dart';
+
 import 'package:damh_flutter/services/firestore_services.dart';
 import 'package:damh_flutter/widgets/loading_indicator.dart';
 import 'package:get/get.dart';
+
+import 'components/sender_bubble.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});

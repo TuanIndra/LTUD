@@ -1,9 +1,10 @@
 import 'package:damh_flutter/consts/consts.dart';
 import 'package:damh_flutter/consts/lists.dart';
 import 'package:damh_flutter/controllers/product_controller.dart';
-import 'package:damh_flutter/screens/chat_screen/chat_screen.dart';
 import 'package:damh_flutter/widgets/our_button.dart';
 import 'package:get/get.dart';
+
+import '../chat_screens/chat_screen.dart';
 
 class ItemDetails extends StatelessWidget {
   final String? title;
@@ -300,17 +301,21 @@ class ItemDetails extends StatelessWidget {
             child: ourButton(
                 color: redColor,
                 onPress: () {
-                  controller.addToCart(
-                      color: data['p_colors'][controller.colorIndex.value],
-                      context: context,
-                      vendorID: data['vendor_id'],
-                      img: data["p_imgs"][0],
-                      qty: controller.quantity.value,
-                      sellername: data['p_seller'],
-                      title: data['p_name'],
-                      tprice: controller.totalPrice.value);
-                      VxToast.show(context, msg: "Đã thêm sản phẩm vào giỏ hàng");
-
+                  if(controller.quantity.value > 0) {
+                    controller.addToCart(
+                        color: data['p_colors'][controller.colorIndex.value],
+                        context: context,
+                        vendorID: data['vendor_id'],
+                        img: data["p_imgs"][0],
+                        qty: controller.quantity.value,
+                        sellername: data['p_seller'],
+                        title: data['p_name'],
+                        tprice: controller.totalPrice.value);
+                    VxToast.show(context, msg: "Đã thêm sản phẩm vào giỏ hàng");
+                  }
+                  else {
+                    VxToast.show(context, msg: "Chọn ít nhất 1 sản phầm");
+                  }
                 },
                 textcolor: whiteColor,
                 title: "Thêm vào giỏ hàng"),

@@ -21,4 +21,5 @@ class HomeController extends GetxController {
 
     username = n;
   }
+  var SearchController = TextEditingController();
 }

@@ -1,4 +1,5 @@
 import 'package:damh_flutter/controllers/cart_controller.dart';
+import 'package:damh_flutter/screens/home_screens/home.dart';
 import 'package:damh_flutter/widgets/loading_indicator.dart';
 import 'package:get/get.dart';
 import '../../consts/consts.dart';
@@ -25,11 +26,14 @@ class PaymentMethod extends StatelessWidget {
                 child: loadingIndicator(),
               )
               : ourButton(
-                  onPress: () {
-                    controller.placeMyOrder(
+                  onPress: ()  async {
+                    await controller.placeMyOrder(
                         orderPaymentMethod: paymentMethod[controller.paymentIndex.value],
                         totalAmount: controller.totalP.value
                     );
+                    await controller.clearCart();
+                    VxToast.show(context, msg: "Order place successfully");
+                    Get.offAll(const Home());
                   },
                 color: redColor,
                 textcolor: whiteColor,
