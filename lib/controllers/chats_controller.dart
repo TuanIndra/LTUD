@@ -27,46 +27,50 @@ class ChatsController extends GetxController {
   var isLoading = false.obs;
 
   getChatId() async {
-
     isLoading(true);
 
     await chats
-        .where('users', isEqualTo: {friendId : null, currentId : null})
+        .where('users', isEqualTo: {friendId: null, currentId: null})
         .limit(1)
-        .get().then((QuerySnapshot snapshot) {
-          if(snapshot.docs.isNotEmpty) {
-            chatDocId = snapshot.docs.single.id;
-          }else {
-            chats.add({
-              'created_on' : null,
-              'last_msg' : '',
-              'users' : {friendId : null, currentId : null},
-              'toId' : '',
-              'fromId' : '',
-              'friend_name' : friendName,
-              'sender_name' : senderName,
-            }).then((value) {
-              chatDocId = value.id;
-            });
-          }
+        .get()
+        .then((QuerySnapshot snapshot) {
+      if (snapshot.docs.isNotEmpty) {
+        chatDocId = snapshot.docs.single.id;
+      } else {
+        chats.add({
+          'created_on': null,
+          'last_msg': '',
+          'users': {friendId: null, currentId: null},
+          'toId': friendId,
+          'fromId': currentId,
+          'friend_name': friendName,
+          'sender_name': senderName,
+        }).then((value) {
+          chatDocId = value.id;
         });
+      }
+    });
+    print("Chat ID: $chatDocId");
     isLoading(false);
   }
 
+
   senMsg(String msg) async {
-    if(msg.trim().isNotEmpty) {
-      chats.doc(chatDocId).update({
-        'created_on' : FieldValue.serverTimestamp(),
-        'last_msg' : msg,
-        'toId' : friendId,
-        'fromId' : currentId,
+    print("Current user ID: $currentId");
+    if (msg.trim().isNotEmpty) {
+      await chats.doc(chatDocId).update({
+        'created_on': FieldValue.serverTimestamp(),
+        'last_msg': msg,
+        'toId': friendId, // Người nhận
+        'fromId': currentId, // Người gửi
       });
 
-      chats.doc(chatDocId).collection(messagesCollection).doc().set({
-        'created_on' : FieldValue.serverTimestamp(),
-        'msg' : msg,
-        'uid' : currentId,
+      await chats.doc(chatDocId).collection(messagesCollection).doc().set({
+        'created_on': FieldValue.serverTimestamp(),
+        'msg': msg,
+        'uid': currentId, // ID của người gửi hiện tại
       });
     }
   }
+
 }

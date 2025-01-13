@@ -148,6 +148,7 @@ class HomeScreen extends StatelessWidget {
                                     icon: featureList1[index],
                                     title: featureTitles1[index]),
                                 10.heightBox,
+
                                 featuredButton(
                                     icon: featureList2[index],
                                     title: featureTitles2[index]),
@@ -252,7 +253,7 @@ class HomeScreen extends StatelessWidget {
                         itemCount: secondSlidersList.length,
                         itemBuilder: (context, index) {
                           return Image.asset(
-                            secondSlidersList[index],
+                            thirdSlidersList[index],
                             fit: BoxFit.fill,
                           )
                               .box

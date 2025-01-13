@@ -14,7 +14,7 @@ class OrdersScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: whiteColor,
       appBar: AppBar(
-        title: "My Orders".text.color(darkFontGrey).fontFamily(semibold).make(),
+        title: "Đơn hàng của tôi".text.color(darkFontGrey).fontFamily(semibold).make(),
       ),
       body: StreamBuilder(
         stream: FirestoreServices.getAllOrders(),
@@ -24,7 +24,7 @@ class OrdersScreen extends StatelessWidget {
               child: loadingIndicator(),
             );
           } else if (snapshot.data!.docs.isEmpty) {
-            return "No order yet!".text.color(darkFontGrey).makeCentered();
+            return "Chưa có đơn đặt hàng nào!".text.color(darkFontGrey).makeCentered();
           } else {
             var data = snapshot.data!.docs;
             return ListView.builder(
@@ -56,19 +56,18 @@ class OrdersScreen extends StatelessWidget {
                             // Kiểm tra xem có kết quả không
                             if (orderQuerySnapshot.docs.isNotEmpty) {
                               // Lấy tài liệu đầu tiên trong danh sách kết quả (hoặc xử lý nhiều kết quả nếu cần)
-                              var orderData = orderQuerySnapshot.docs.first.data();
+                              var orderData = data[index].data() as Map<String, dynamic>;
                               Get.to(() => OrdersDetails(data: orderData));
                             } else {
-                              print("No orders found for the current user");
+                              print("Không tìm thấy đơn hàng nào cho người dùng hiện tại");
                               // Hiển thị thông báo nếu không có dữ liệu
-                              VxToast.show(context, msg: "No orders found");
+                              VxToast.show(context, msg: "Không tìm thấy đơn hàng nào");
                             }
                           } catch (e) {
-                            print("Error fetching orders: $e");
-                            VxToast.show(context, msg: "Error fetching orders");
+                            print("Lỗi khi tìm nạp đơn hàng: $e");
+                            VxToast.show(context, msg: "Lỗi khi tìm nạp đơn đặt hàng");
                           }
                         },
-
                         icon: const Icon(
                           Icons.arrow_forward_ios_rounded,
                           color: darkFontGrey,

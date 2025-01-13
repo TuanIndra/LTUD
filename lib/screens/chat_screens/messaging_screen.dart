@@ -16,7 +16,7 @@ class MessagingScreen extends StatelessWidget {
       backgroundColor: whiteColor,
       appBar: AppBar(
         title:
-            "My Messages".text.color(darkFontGrey).fontFamily(semibold).make(),
+            "Tin nhắn của tôi".text.color(darkFontGrey).fontFamily(semibold).make(),
       ),
       body: StreamBuilder(
         stream: FirestoreServices.getAllMessages(),
@@ -26,7 +26,7 @@ class MessagingScreen extends StatelessWidget {
               child: loadingIndicator(),
             );
           } else if (snapshot.data!.docs.isEmpty) {
-            return "No messages yet!".text.color(darkFontGrey).makeCentered();
+            return "Chưa có tin nhắn nào!".text.color(darkFontGrey).makeCentered();
           } else {
             var data = snapshot.data!.docs;
             return Padding(

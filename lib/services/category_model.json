@@ -1,35 +1,35 @@
 {
     "categories": [
         {
-            "name": "Giá",
+            "name": "Apple",
             "subcategory": [
-                "Điện thoại giá rẻ",
-                "Điện thoại tầm trung",
-                "Điện thoại cao cấp"
+                "Apple giá rẻ",
+                "Apple tầm trung",
+                "Apple cao cấp"
             ]
         },
         {
-            "name":"Hê điều hành",
+            "name":"Xiaomi",
             "subcategory":[
-                "Android",
-                "Ios",
-                "khác"
+                "Xiaomi giá rẻ",
+                "Xiaomi tầm trung",
+                "Xiaomi cao cấp"
             ]
         },
         {
-            "name":"Đối tượng người dùng",
+            "name":"Samsung",
             "subcategory":[
-                "Dành cho học sinh, sinh viên",
-                "Dành cho người lớn tuổi",
-                "Dành cho dân công nghệ"
+                "Samsung giá rẻ",
+                "Samsung tầm trung",
+                "Samsung cao cấp"
             ]
         },
         {
-            "name":"Cấu hình",
+            "name":"Khác",
             "subcategory":[
-                "Điện thoại cho người chơi game",
-                "Điện thoại cho công việc",
-                "Điện thoại chụp ảnh đẹp"
+                "Giá rẻ",
+                "Tầm trung",
+                "Cao cấp"
             ]
         }
     ]

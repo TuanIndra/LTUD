@@ -17,7 +17,7 @@ class PaymentMethod extends StatelessWidget {
     return Obx( () => Scaffold(
         backgroundColor: whiteColor,
         appBar: AppBar(
-          title: "Choose Payment Method".text.fontFamily(semibold).color(darkFontGrey).make(),
+          title: "Chọn phương thức thanh toán".text.fontFamily(semibold).color(darkFontGrey).make(),
         ),
         bottomNavigationBar: SizedBox(
           height: 60,
@@ -32,12 +32,12 @@ class PaymentMethod extends StatelessWidget {
                         totalAmount: controller.totalP.value
                     );
                     await controller.clearCart();
-                    VxToast.show(context, msg: "Order place successfully");
+                    VxToast.show(context, msg: "Đặt hàng thành công");
                     Get.offAll(const Home());
                   },
                 color: redColor,
                 textcolor: whiteColor,
-                title: "Place my order",
+                title: "Đặt hàng của tôi",
               ),
         ),
         body: Padding(

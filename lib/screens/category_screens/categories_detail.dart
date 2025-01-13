@@ -81,9 +81,9 @@ class _CategoriesDetailState extends State<CategoriesDetail> {
                         );
                       } else if (snapshot.data!.docs.isEmpty) {
                         return Expanded(
-                          child: "No products found!"
+                          child: "Không tìm thấy sản phẩm!"
                               .text
-                              .white
+                              .black
                               .makeCentered(),
                         );
                       } else {

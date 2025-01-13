@@ -28,21 +28,22 @@ const searchanything = "Tìm kiếm...",
     brand = "Thương hiệu",
     featuredCategories = "Danh mục nổi bật",
     topCategories = "Top danh mục",
-    womenDress = "Woman Dress",
-    girlsWatches = "Girl Watches",
-    mobilePhone = "Mobile Phone",
-    boysGlasses = "Boy Glasses",
-    tShirts = "T-Shirts",
-    featureProduct = "Feature Products",
-    girlsDress = "Girl Dress";
+    price1 = "500k - 3tr",
+    price2 = "3tr - 10tr",
+    price4 = "10tr - 20tr",
+    price5 = "20tr - 30tr",
+    price6 = "30tr - 50tr",
+    featureProduct = "Sản phẩm đặc sắc",
+    price3 = "hơn 50tr";
 
 //PROFILE STRING
-const wishlist = "My wishlist", orders = "My orders", messages = "Messages";
+const wishlist = "Sản phẩm yêu thích", orders = "Đơn hàng của tôi", messages = "Tin nhắn";
 
-const Iphone = "Giá",
-    Samsung = "Hê điều hành",
-    Nokia = "Đối tượng người dùng",
-    XiaoMi = "Cấu hình";
+const Iphone = "Apple",
+    XiaoMi = "Samsung",
+    Samsung = "Xiaomi",
+    Khac = "Khác";
+
 //item detail
 const video = "video",
     reviews = "reviews",
@@ -51,4 +52,5 @@ const video = "video",
     supportPolicy = "Support policy",
     productUMayLike = "Sản phẩm bạn có thể sẽ thích";
 
-const paypal = "Paypal", stripe = "Stripe", cod = "Cash on delivery";
+const paypal = "Paypal", stripe = "Stripe", cod = "Tiền mặt khi giao hàng";
+

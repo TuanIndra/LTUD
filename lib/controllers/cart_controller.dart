@@ -34,7 +34,7 @@ class CartController extends GetxController {
     placingOrder(true);
     await getProductDetails();
     await firestore.collection(ordersCollection).doc().set({
-      'order_code' : "23939111213",
+      'order_code' : "Đơn hàng giá",
       'order_date' : FieldValue.serverTimestamp(),
       'order_by' : currentUser!.uid,
       'order_by_name' : Get.find<HomeController>().username,
@@ -43,7 +43,7 @@ class CartController extends GetxController {
       'order_by_state' : stateController.text,
       'order_by_phone' : phoneController.text,
       'order_by_postalcode' : postalcodeController.text,
-      'shipping_method' : "Home Delivery",
+      'shipping_method' : "Giao hàng tận nhà",
       'payment_method' : orderPaymentMethod,
       'order_place' : true,
       'order_confirmed' : false,

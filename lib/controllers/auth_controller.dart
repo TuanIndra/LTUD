@@ -17,6 +17,10 @@ class AuthController extends GetxController {
           email: emailController.text,
           password: passwordController.text
       );
+      // if (userCredential.user != null) {
+      //   print("Logged in user ID: ${userCredential.user!.uid}");
+      //   VxToast.show(context, msg: "Đăng nhập thành công với UID: ${userCredential.user!.uid}");
+      // }
     } on FirebaseAuthException catch (e) {
       VxToast.show(context, msg: e.toString());
     }

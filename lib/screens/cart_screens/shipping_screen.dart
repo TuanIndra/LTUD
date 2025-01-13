@@ -15,7 +15,7 @@ class ShippingDetails extends StatelessWidget {
     return Scaffold(
       backgroundColor: whiteColor,
       appBar: AppBar(
-        title: "Shipping info".text.fontFamily(semibold).color(darkFontGrey).make(),
+        title: "Thông tin vận chuyển".text.fontFamily(semibold).color(darkFontGrey).make(),
       ),
       bottomNavigationBar: SizedBox(
         height: 60,
@@ -25,23 +25,23 @@ class ShippingDetails extends StatelessWidget {
                 Get.to(() => const PaymentMethod());
               }
               else {
-                VxToast.show(context, msg: "Please fill the form");
+                VxToast.show(context, msg: "Vui lòng điền vào mẫu");
               }
             },
             color: redColor,
             textcolor: whiteColor,
-            title: "Continue",
+            title: "Tiếp tục",
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
-            customTextField(hint: "Address", isPass: false, title: "Address", controller: controller.addressController),
-            customTextField(hint: "City", isPass: false, title: "City", controller: controller.cityController),
-            customTextField(hint: "State", isPass: false, title: "State", controller: controller.stateController),
-            customTextField(hint: "Postal Code", isPass: false, title: "Postal Code", controller: controller.postalcodeController),
-            customTextField(hint: "Phone", isPass: false, title: "Phone", controller: controller.phoneController),
+            customTextField(hint: "Địa chỉ", isPass: false, title: "Địa chỉ", controller: controller.addressController),
+            customTextField(hint: "Thành phố", isPass: false, title: "Thành phố", controller: controller.cityController),
+            customTextField(hint: "trạng thái", isPass: false, title: "Trạng thái", controller: controller.stateController),
+            customTextField(hint: "Mã bưu chính", isPass: false, title: "Mã bưu chính", controller: controller.postalcodeController),
+            customTextField(hint: "Số điện thoại", isPass: false, title: "Số điện thoại", controller: controller.phoneController),
           ],
         ),
       ),

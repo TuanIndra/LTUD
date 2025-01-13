@@ -50,7 +50,7 @@ class ProfileScreen extends StatelessWidget {
           );
         } else if (!snapshot.hasData || currentUser == null) {
           return const Center(
-            child: Text("No user data available",
+            child: Text("Không có sẵn dữ liệu người dùng",
                 style: TextStyle(color: whiteColor)),
           );
         } else {
@@ -123,15 +123,15 @@ class ProfileScreen extends StatelessWidget {
                         children: [
                           detailsCard(
                               count: countData[0].toString(),
-                              title: "In your cart",
+                              title: "Giỏ hàng",
                               width: context.screenWidth / 3.3),
                           detailsCard(
                               count: countData[1].toString(),
-                              title: "In your wishlist",
+                              title: "Yêu thích",
                               width: context.screenWidth / 3.3),
                           detailsCard(
                               count: countData[2].toString(),
-                              title: "Your orders",
+                              title: "Đơn hàng",
                               width: context.screenWidth / 3.3)
                         ],
                       );

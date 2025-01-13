@@ -39,7 +39,7 @@ class EditProfileSceen extends StatelessWidget {
                     controller.changeImage(context);
                   },
                   textcolor: whiteColor,
-                  title: "Change",
+                  title: "Đổi",
               ),
               const Divider(),
               20.heightBox,
@@ -67,14 +67,14 @@ class EditProfileSceen extends StatelessWidget {
                             password: controller.passController.text,
                           );
 
-                          VxToast.show(context, msg: "Profile updated successfully");
+                          VxToast.show(context, msg: "Hồ sơ được cập nhật thành công");
                         } catch (e) {
-                          VxToast.show(context, msg: "Failed to update profile: $e");
+                          VxToast.show(context, msg: "Không thể cập nhật hồ sơ: $e");
                         } finally {
                           controller.isLoading(false); // Đặt trạng thái loading về false dù có lỗi hay không
                         }
                       },
-                      textcolor: whiteColor, title: "Save")
+                      textcolor: whiteColor, title: "Lưu")
 
               ),
             ],

@@ -37,7 +37,7 @@ class ChatScreen extends StatelessWidget {
                         }
                         else if(snapshot.data!.docs.isEmpty) {
                           return Center(
-                            child: "Send a message...".text.color(darkFontGrey).make(),
+                            child: "Gửi tin nhắn...".text.color(darkFontGrey).make(),
                           );
                         }
                         else {
@@ -70,7 +70,7 @@ class ChatScreen extends StatelessWidget {
                               color: textfieldGrey
                           )
                       ),
-                      hintText: "Type a message...",
+                      hintText: "Nhập tin nhắn...",
                     ),
 
                   ),

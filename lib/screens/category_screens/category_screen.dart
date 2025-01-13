@@ -32,7 +32,7 @@ class CategoryScreen extends StatelessWidget {
                 children: [
                   Image.asset(
                     categoriesImage[index],
-                    height: 100,
+                    height: 150,
                     width: 200,
                     fit: BoxFit.fill,
                   ),

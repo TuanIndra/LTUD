@@ -30,7 +30,7 @@ class CartScreen extends StatelessWidget {
         ),
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: "Giở hàng của bạn"
+          title: "Giỏ hàng của bạn"
               .text
               .color(darkFontGrey)
               .fontFamily(semibold)

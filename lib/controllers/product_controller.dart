@@ -31,13 +31,13 @@ class ProductController extends GetxController {
     if(quantity.value<totalQuantity){
       quantity.value++;
     }
-    
+
   }
   decreaseQuatity(){
     if(quantity.value>0){
        quantity.value--;
     }
-   
+
   }
   calculateTotalprice(price){
     totalPrice.value =price*quantity.value;
@@ -81,7 +81,7 @@ class ProductController extends GetxController {
           'p_wishlist' : FieldValue.arrayUnion([currentUser!.uid])
         }, SetOptions(merge: true));
     isFav(true);
-    VxToast.show(context,msg: 'Added to wishlist');
+    VxToast.show(context,msg: 'Đã thêm vào danh sách yêu thích');
   }
 
   removeFromWishList(docId, context) async {
@@ -92,7 +92,7 @@ class ProductController extends GetxController {
       'p_wishlist' : FieldValue.arrayRemove([currentUser!.uid])
     }, SetOptions(merge: true));
     isFav(false);
-    VxToast.show(context,msg: 'Removed from wishlist');
+    VxToast.show(context,msg: 'Đã xóa khỏi danh sách yêu thích');
   }
 
   checkIfFav(data) async {
@@ -103,4 +103,14 @@ class ProductController extends GetxController {
       isFav(false);
     }
   }
+
+  Stream<QuerySnapshot> getProductsByPriceRange(List<double> priceRange) {
+    return firestore
+        .collection(productsCollection)
+        .where('p_price', isGreaterThanOrEqualTo: priceRange[0])
+        .where('p_price', isLessThan: priceRange[1])
+        .snapshots();
+  }
+
+
 }

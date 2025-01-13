@@ -13,7 +13,7 @@ class WishlistScreen extends StatelessWidget {
       backgroundColor: whiteColor,
       appBar: AppBar(
         title:
-            "My Wishlist".text.color(darkFontGrey).fontFamily(semibold).make(),
+            "Danh sách yêu thích".text.color(darkFontGrey).fontFamily(semibold).make(),
       ),
       body: StreamBuilder(
         stream: FirestoreServices.getWishlists(),
@@ -23,7 +23,7 @@ class WishlistScreen extends StatelessWidget {
               child: loadingIndicator(),
             );
           } else if (snapshot.data!.docs.isEmpty) {
-            return "No wishlist yet!".text.color(darkFontGrey).makeCentered();
+            return "Chưa có sản phẩm yêu thích nào!".text.color(darkFontGrey).makeCentered();
           } else {
             var data = snapshot.data!.docs;
             return Column(

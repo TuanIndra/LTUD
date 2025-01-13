@@ -18,7 +18,7 @@ Widget orderPlaceDetails({title1, title2, d1, d2}) {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              "$title1".text.fontFamily(semibold).make(),
+              "$title2".text.fontFamily(semibold).make(),
               "$d2".text.make(),
             ],
           ),
